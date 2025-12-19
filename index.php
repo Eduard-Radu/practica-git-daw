@@ -4,10 +4,8 @@
 
 function mostrarTasques($tasques) {
     echo "=== LLISTA DE TASQUES ===\n";
-    // ERROR INTENCIONAT: bucle for incorrecte
-    for ($i = 0; $i < count($tasques); $i++) {
-        echo "[$i] ERROR\n";  // Això no funcionarà correctament
-    }
+    // TODO: Recorre l'array de tasques amb foreach
+    // Mostra cada tasca amb el format: [id] descripció
 }
 
 // Crea un array amb almenys 3 tasques
