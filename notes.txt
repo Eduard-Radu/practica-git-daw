@@ -1,0 +1,66 @@
+DIFERÈNCIES ENTRE git restore I git revert
+=========================================
+
+1. git restore
+--------------
+La comanda git restore s'utilitza per desfer canvis LOCALS que encara
+NO han estat confirmats amb un commit.
+
+Què fa:
+- Desfà canvis en fitxers del directori de treball
+- Pot treure fitxers de l'staging area
+- NO modifica l'historial de commits
+
+Quan s'utilitza:
+- Quan hem modificat un fitxer i volem tornar a l'última versió confirmada
+- Quan hem afegit un fitxer a staging per error
+- Quan encara NO hem fet commit
+
+Exemples d'ús:
+- Desfer canvis d'un fitxer:
+  git restore index.php
+
+- Treure un fitxer de staging:
+  git restore --staged config.php
+
+Característiques importants:
+- Els canvis descartats normalment NO es poden recuperar
+- Actua només sobre canvis locals
+- No crea cap commit nou
+
+
+2. git revert
+-------------
+La comanda git revert s'utilitza per desfer els efectes d'un commit
+QUE JA EXISTEIX a l'historial.
+
+Què fa:
+- Crea un nou commit
+- Aquest nou commit desfà els canvis d'un commit anterior
+- Manté l'historial complet del repositori
+
+Quan s'utilitza:
+- Quan un commit amb errors ja s'ha fet push al repositori remot
+- Quan treballem en equip i no podem reescriure l'historial
+- Quan volem corregir errors sense eliminar commits anteriors
+
+Exemples d'ús:
+- Revertir un commit concret:
+  git revert f7a9c21
+
+Característiques importants:
+- NO elimina el commit original
+- Afegeix un nou commit correctiu
+- És segur en repositoris compartits
+
+
+3. Diferències principals
+-------------------------
+- git restore actua sobre canvis NO confirmats
+- git revert actua sobre commits ja confirmats
+- git restore NO modifica l'historial
+- git revert MANTÉ l'historial i afegeix un commit nou
+
+Resum:
+git restore = desfer canvis locals
+git revert  = desfer commits mantenint l'historial
